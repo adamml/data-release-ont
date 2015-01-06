@@ -1,0 +1,52 @@
+@prefix : <http://purl.org/voc/data-release/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix trust: <http://purl.org/vocab/collaborative-trust/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+: vann:preferredNamespacePrefix "publication";
+	vann:prefferedNamespaceUri <http://purl.org/vocab/publication/>.
+	
+trust:Trust prov:wasGeneratedBy :Release.
+
+:Release a rdfs:Class;
+	rdfs:subClassOf prov:Activity.
+
+:DataRelease a rdfs:Class;
+	rdfs:subClassOf prov:Activity;
+	rdfs:subClassOf :Release.
+	
+:Publication a rdfs:Class;
+	rdfs:subClassOf prov:Entity;
+	prov:wasGeneratedBy :Release;
+	prov:wasAttributedTo :Author.	
+	
+:DataPublisher a rdfs:Class;
+	rdfs:subClassOf prov:Agent.
+	
+:AcademicPublisher a rdfs:Class;
+	rdfs:subClassOf prov:Agent.
+	
+:Author a rdfs:Class;
+	rdfs:subClassOf prov:Person.
+	
+:persistentIdentifier a rdf:Property;
+	rdfs:subPropertyOf prov:value;
+	rdfs:rdfs:domain :Publication.
+	
+:digitalObjectIdentifier a rdf:Property;
+	rdfs:subPropertyOf prov:value;
+	rdfs:subPropertyOf :hasPersistentIdentifier;
+	rdfs:rdfs:domain :Publication.
+	
+:wasPublishedBy a rdf:Property;
+	rdfs:subClassOf prov:wasAttributedTo;
+	rdfs:domain :Publication;
+	rdfs:range :AcademicPublisher.
+	
+:wasReleasedBy a rdf:Property;
+	rdfs:subClassOf prov:wasAssociatedWith;
+	rdfs:domain :Release;
+	rdfs:range prov:Agent.
