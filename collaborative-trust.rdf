@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns="http://purl.org/voc/collaborative-trust/"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:prov="http://www.w3.org/ns/prov#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:vann="http://purl.org/vocab/vann/"
+	xmlns:voaf="http://purl.org/vocommons/voaf#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<rdf:Description rdf:about="http://purl.org/voc/collaborative-trust/">
+	<rdf:type rdf:resource="http://purl.org/vocommons/voaf#Vocabulary"/>
+	<voaf:classNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</voaf:classNumber>
+	<voaf:propertyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</voaf:propertyNumber>
+	<voaf:specializes rdf:resource="http://www.w3.org/ns/prov#"/>
+	<vann:preferredNamespacePrefix>trust</vann:preferredNamespacePrefix>
+	<vann:prefferedNamespaceUri rdf:resource="http://purl.org/vocab/collaborative-trust/"/>
+	<dcterms:creator xml:lang="en">Adam M. Leadbetter</dcterms:creator>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-12-12</dcterms:created>
+	<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-01-06</dcterms:modified>
+	<owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</owl:versionInfo>
+	<dcterms:references rdf:resource="http://www.igi-global.com/chapter/examining-trust-in-collaborative-research-networks/119814"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.org/voc/collaborative-trust/Trust">
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+	<rdfs:label xml:lang="en">Trust is the reliance of an individual on another person or entity. Trust may be attributed torelationships between people or relationships within and between social groups. Trust is built on three components: benevolence, competence and integrity. This Class, which describes the overall value of Trust, has attributes hasTrustIndicator, hasBenevolenceIndicator, hasCompetenceIndicator and hasIntegrityIndicator which allow the connection of the Class 'Trust' to resources which allow an assessment of three components of trust.</rdfs:label>
+	<rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-12-12</dcterms:created>
+	<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-12-12</dcterms:modified>
+	<owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:versionInfo>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.org/voc/collaborative-trust/hasTrustIndicator">
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	<rdfs:label xml:lang="en">The property which encapsulates the link from a Trust instaance to the indicators of that trust instance. This property is specialised by subpropeties of hasBenevolenceIndicator, hasCompetenceIndicator and hasIntegrityIndicator.</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#Value"/>
+	<rdfs:domain rdf:resource="http://purl.org/voc/collaborative-trust/Trust"/>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-12-18</dcterms:created>
+	<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-12-18</dcterms:modified>
+	<owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:versionInfo>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.org/voc/collaborative-trust/hasBenevolenceIndicator">
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	<rdfs:label xml:lang="en">Benevolence is the care about the well-being of other individuals and the goal of a community. Common benevolence indicators include persistent identifiers to datasets</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#value"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/voc/collaborative-trust/hasTrustIndicator"/>
+	<rdfs:domain rdf:resource="http://purl.org/voc/collaborative-trust/Trust"/>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-12-12</dcterms:created>
+	<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-01-06</dcterms:modified>
+	<owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</owl:versionInfo>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.org/voc/collaborative-trust/hasCompetenceIndicator">
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	<rdfs:label xml:lang="en">Competence is the relevant experience and knowledge of an individual. Common competence indicators include digital badges or links to citations</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#value"/>
+	<rdfs:domain rdf:resource="http://purl.org/voc/collaborative-trust/Trust"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/voc/collaborative-trust/hasTrustIndicator"/>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-12-12</dcterms:created>
+	<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-01-06</dcterms:modified>
+	<owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</owl:versionInfo>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.org/voc/collaborative-trust/hasIntegrityIndicator">
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	<rdfs:label xml:lang="en">Integrity is an individual’s consistent adherence to a set of principles which they find trustworthy. Common integrity indicators include links to commentary metadata</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#value"/>
+	<rdfs:domain rdf:resource="http://purl.org/voc/collaborative-trust/Trust"/>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/voc/collaborative-trust/hasTrustIndicator"/>
+	<dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-12-12</dcterms:created>
+	<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-01-06</dcterms:modified>
+	<owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</owl:versionInfo>
+</rdf:Description>
+
+</rdf:RDF>
