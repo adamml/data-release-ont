@@ -1,0 +1,109 @@
+@prefix : <http://purl.org/vocab/data-information-knowledge-wisdom/>.
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+: a voaf:Vocabulary;
+	voaf:classNumber "6"^^xsd:integer;
+	voaf:propertyNumber "10"^^xsd:integer;
+	voaf:specializes <http://www.w3.org/ns/prov#>;
+	vann:preferredNamespacePrefix "dikw";
+	vann:prefferedNamespaceUri <http://purl.org/vocab/data-information-knowledge-wisdom/>;
+	dcterms:creator "Adam M. Leadbetter"@en;
+	dcterms:created "2014-12-18"^^xsd:date;
+	dcterms:modified "2014-12-18"^^xsd:date;
+	owl:versionInfo "1"^^xsd:integer;
+	dcterms:references <http://www.nathan.com/thoughts/unified/unified.pdf>.
+	
+:Data a rdfs:Class, owl:Class;
+	rdfs:subClassOf prov:Entity;
+	rdfs:subClassOf skos:Concept;
+	owl:disjointWith :Information;
+	owl:disjointWith :Knowledge;
+	owl:disjointWith :Wisdom.
+
+:Information a rdfs:Class, owl:Class;
+	rdfs:subClassOf prov:Entity;
+	rdfs:subClassOf skos:Concept;
+	owl:disjointWith :Data;
+	owl:disjointWith :Knowledge;
+	owl:disjointWith :Wisdom.
+
+:Knowledge a rdfs:Class, owl:Class;
+	rdfs:subClassOf prov:Entity;
+	rdfs:subClassOf skos:Concept;
+	owl:disjointWith :Information;
+	owl:disjointWith :Data;
+	owl:disjointWith :Wisdom.
+
+:Wisdom a rdfs:Class, owl:Class;
+	rdfs:subClassOf prov:Entity;
+	rdfs:subClassOf skos:Concept;
+	owl:disjointWith :Information;
+	owl:disjointWith :Knowledge;
+	owl:disjointWith :Data.
+	
+:Producer a rdfs:Class, owl:Class;
+	rdfs:subClassOf skos:Concept;
+	rdfs:subClassOf prov:Agent;
+	owl:disjointWith :Consumer.
+
+:Consumer a rdfs:Class, owl:Class;
+	rdfs:subClassOf skos:Concept;
+	rdfs:subClassOf prov:Agent;
+	owl:disjointWith :Producer.
+	
+:isPresentedBy a rdf:Property;
+	rdfs:subPropertyOf skos:related;
+	rdfs:domain :Data;
+	rdfs:range :Information.
+	
+:hasPresentationSource a rdf:Property;
+	rdfs:subPropertyOf skos:related;
+	rdfs:domain :Information;
+	rdfs:range :Data;
+	rdfs:subPropertyOf prov:wasDerivedFrom.
+	
+:isIntegratedBy a rdf:Property;
+	rdfs:subPropertyOf skos:related;
+	rdfs:domain :Information;
+	rdfs:range :Knowledge.
+	
+:hasIntegrationSource a rdf:Property;
+	rdfs:subPropertyOf skos:related;
+	rdfs:domain :Knowledge;
+	rdfs:range :Information;
+	rdfs:subPropertyOf prov:wasDerivedFrom.
+	
+:isEvaluatedBy a rdf:Property;
+	rdfs:subPropertyOf skos:related;
+	rdfs:domain :Knowledge;
+	rdfs:range :Wisdom.
+	
+:hasEvaluationSource a rdf:Property;
+	rdfs:subPropertyOf skos:related;
+	rdfs:domain :Wisdom;
+	rdfs:range :Knowledge;
+	rdfs:subPropertyOf prov:wasDerivedFrom.
+	
+:wasProducedBy a rdf:Property;
+	rdfs:subPropertyOf skos:related;
+	rdfs:domain _:producerClasses;
+	rdfs:range :Producer.
+
+:wasConsumedBy a rdf:Property;
+	rdfs:subPropertyOf skos:related;
+	rdfs:domain _:consumerClasses;
+	rdfs:range :Concsumer.
+
+_:producerClasses a owl:Class;
+	owl:unionOf (:Data :Information :Knowledge).
+	
+_:consumerClasses a owl:Class;
+	owl:unionOf (:Information :Knowledge).

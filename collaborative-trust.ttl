@@ -1,0 +1,63 @@
+@prefix : <http://purl.org/voc/collaborative-trust/>.
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+: a voaf:Vocabulary;
+	voaf:classNumber "1"^^xsd:integer;
+	voaf:propertyNumber "4"^^xsd:integer;
+	voaf:specializes <http://www.w3.org/ns/prov#>;
+	vann:preferredNamespacePrefix "trust";
+	vann:prefferedNamespaceUri <http://purl.org/vocab/collaborative-trust/>;
+	dcterms:creator "Adam M. Leadbetter"@en;
+	dcterms:created "2014-12-12"^^xsd:date;
+	dcterms:modified "2015-01-06"^^xsd:date;
+	owl:versionInfo "3"^^xsd:integer;
+	dcterms:references <http://www.igi-global.com/chapter/examining-trust-in-collaborative-research-networks/119814>.
+	
+:Trust a rdfs:Class, owl:Class;
+	rdfs:label "Trust is the reliance of an individual on another person or entity. Trust may be attributed torelationships between people or relationships within and between social groups. Trust is built on three components: benevolence, competence and integrity. This Class, which describes the overall value of Trust, has attributes hasTrustIndicator, hasBenevolenceIndicator, hasCompetenceIndicator and hasIntegrityIndicator which allow the connection of the Class 'Trust' to resources which allow an assessment of three components of trust."@en;
+	rdfs:subClassOf prov:Entity;
+	dcterms:created "2014-12-12"^^xsd:date;
+	dcterms:modified "2014-12-12"^^xsd:date;
+	owl:versionInfo "1"^^xsd:integer.
+
+:hasTrustIndicator a rdf:Property;
+	rdfs:label "The property which encapsulates the link from a Trust instaance to the indicators of that trust instance. This property is specialised by subpropeties of hasBenevolenceIndicator, hasCompetenceIndicator and hasIntegrityIndicator."@en;
+	rdfs:subPropertyOf prov:Value;
+	rdfs:domain :Trust;
+	dcterms:created "2014-12-18"^^xsd:date;
+	dcterms:modified "2014-12-18"^^xsd:date;
+	owl:versionInfo "1"^^xsd:integer.
+	
+:hasBenevolenceIndicator a rdf:Property;
+	rdfs:label "Benevolence is the care about the well-being of other individuals and the goal of a community. Common benevolence indicators include persistent identifiers to datasets"@en;
+	rdfs:subPropertyOf prov:value;
+	rdfs:subPropertyOf :hasTrustIndicator;
+	rdfs:domain :Trust;
+	dcterms:created "2014-12-12"^^xsd:date;
+	dcterms:modified "2015-01-06"^^xsd:date;
+	owl:versionInfo "2"^^xsd:integer.
+	
+:hasCompetenceIndicator a rdf:Property;
+	rdfs:label "Competence is the relevant experience and knowledge of an individual. Common competence indicators include digital badges or links to citations"@en;
+	rdfs:subPropertyOf prov:value;
+	rdfs:domain :Trust;
+	rdfs:subPropertyOf :hasTrustIndicator;
+	dcterms:created "2014-12-12"^^xsd:date;
+	dcterms:modified "2015-01-06"^^xsd:date;
+	owl:versionInfo "2"^^xsd:integer.
+	
+:hasIntegrityIndicator a rdf:Property;
+	rdfs:label "Integrity is an individual’s consistent adherence to a set of principles which they find trustworthy. Common integrity indicators include links to commentary metadata"@en;
+	rdfs:subPropertyOf prov:value;
+	rdfs:domain :Trust;
+	rdfs:subPropertyOf :hasTrustIndicator;
+	dcterms:created "2014-12-12"^^xsd:date;
+	dcterms:modified "2015-01-06"^^xsd:date;
+	owl:versionInfo "2"^^xsd:integer.
