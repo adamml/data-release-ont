@@ -50,3 +50,8 @@ trust:Trust prov:wasGeneratedBy :Release.
 	rdfs:subClassOf prov:wasAssociatedWith;
 	rdfs:domain :Release;
 	rdfs:range prov:Agent.
+	
+:wasAuthoredBy a rdf:Property;
+	rdfs:subClassOf prov:wasAttributedTo;
+	rdfs:domain :Publication;
+	rdfs:range :Author.
